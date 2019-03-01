@@ -1,20 +1,17 @@
 <div class="container">
   <table class="table table-hover">
-    <thead>
+      <thead>
       <tr>
-        <th>Flight Number</th>
-        <th>Launch Year</th>
-        <th>Rocket Name</th>
-        <th>Details</th>
+        <th *ngFor="let col of columnTitles">{{ col }}</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let lunch of lunches">
-        <td>{{ lunch.flightNumber}}</td>
-        <td> {{ lunch.launchYear }} </td>
-        <td> {{ lunch.rocketName }} </td>
-        <td> {{ lunch.details | ellipsis:90 }} </td>
+      <tr class=""
+        *ngFor="let launch of lunches"
+        app-launch
+        [columns]="columns"
+        [launch]="launch">
       </tr>
-    </tbody>
-  </table>
+      <tbody>
+    </table>
 </div>
