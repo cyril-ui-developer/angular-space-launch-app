@@ -7,5 +7,5 @@ export interface ILunchesAPIData {
   details: string;
   links: {
     presskit: string
-  }
+  };
 }
