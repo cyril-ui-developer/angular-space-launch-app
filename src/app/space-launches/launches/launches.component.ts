@@ -20,9 +20,19 @@ export class LaunchesComponent implements OnInit {
 
   constructor(private lunchesService: LunchesService) { }
 
-  ngOnInit() {
+  loadLaunches( limit: string, order: string) {
     this.lunchesService
-      .getAllLunches()
+      .getAllLunches(limit, order)
       .subscribe(data => (this.lunches = data));
   }
+
+  ngOnInit() {
+    this.loadLaunches('10', 'asc');
+  }
+
+  orderLaunches( order: string) {
+    this.loadLaunches('10', order);
+  }
+
+
 }

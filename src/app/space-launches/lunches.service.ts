@@ -15,10 +15,10 @@ export class LunchesService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getAllLunches(): Observable<ILaunch[]> {
+  public getAllLunches( limit: string, order: string ): Observable<ILaunch[]> {
     return this.httpClient
       .get<ILunchesAPIData[]>(
-        `${environment.baseUrl}launches?limit=15&order=desc`
+        `${environment.baseUrl}launches?limit=${limit}&order=${order}`
       )
       .pipe(map(data => this.transformToILunch(data)))
       .pipe(
