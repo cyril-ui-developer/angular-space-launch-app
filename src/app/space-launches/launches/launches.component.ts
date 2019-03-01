@@ -9,6 +9,7 @@ import { ILaunch } from '../launch';
 })
 export class LaunchesComponent implements OnInit {
 lunches: ILaunch[];
+
   constructor(private lunchesService: LunchesService) { }
 
   ngOnInit() {

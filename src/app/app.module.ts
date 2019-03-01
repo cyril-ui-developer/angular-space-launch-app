@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FaqsComponent } from './faqs/faqs.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +18,7 @@ import { FaqsComponent } from './faqs/faqs.component';
     HomeComponent,
     PageNotFoundComponent,
     FaqsComponent
+
   ],
   imports: [
     BrowserModule,

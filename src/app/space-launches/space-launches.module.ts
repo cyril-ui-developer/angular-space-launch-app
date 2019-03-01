@@ -6,12 +6,14 @@ import { LaunchComponent } from './launch/launch.component';
 import { LaunchesComponent } from './launches/launches.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LunchesService } from './lunches.service';
+import { EllipsisPipe } from '../common/pipes/ellipsis';
 
 
 @NgModule({
   declarations: [
     LaunchComponent,
-    LaunchesComponent
+    LaunchesComponent,
+    EllipsisPipe
   ],
   imports: [
     CommonModule,

@@ -11,9 +11,9 @@
     <tbody>
       <tr *ngFor="let lunch of lunches">
         <td>{{ lunch.flightNumber}}</td>
-        <td> February 28, 2019</td>
-        <td> ABC</td>
-        <td>Lunch details </td>
+        <td> {{ lunch.launchYear }} </td>
+        <td> {{ lunch.rocketName }} </td>
+        <td> {{ lunch.details | ellipsis:90 }} </td>
       </tr>
     </tbody>
   </table>

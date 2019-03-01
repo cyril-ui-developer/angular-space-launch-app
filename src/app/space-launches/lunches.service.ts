@@ -5,18 +5,8 @@ import { catchError, map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { ILaunch } from './launch';
+import { ILunchesAPIData } from './launch-api';
 
-interface ICurrentWeatherData {
-  flight_number: number;
-  launch_year: string;
-  rocket: {
-    rocket_name: string,
-  };
-  details: string;
-  links: {
-    presskit: string
-  }
-}
 
 @Injectable({
   providedIn: 'root'
@@ -27,8 +17,8 @@ export class LunchesService {
 
   public getAllLunches(): Observable<ILaunch[]> {
     return this.httpClient
-      .get<ICurrentWeatherData[]>(
-        `${environment.baseUrl}launches?limit=5&order=desc`
+      .get<ILunchesAPIData[]>(
+        `${environment.baseUrl}launches?limit=15&order=desc`
       )
       .pipe(map(data => this.transformToILunch(data)))
       .pipe(
@@ -36,7 +26,7 @@ export class LunchesService {
       );
   }
 
-  private transformToILunch(data: ICurrentWeatherData[]): ILaunch[] {
+  private transformToILunch(data: ILunchesAPIData[]): ILaunch[] {
     return data.map((d) => {
       return {
         flightNumber: d.flight_number,
@@ -44,10 +34,8 @@ export class LunchesService {
         rocketName: d.rocket.rocket_name,
         details: d.details,
         presskit: d.links.presskit
-
-      }
-
-    })
+      };
+    });
   }
 
 
