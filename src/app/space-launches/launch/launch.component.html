@@ -1,4 +1,4 @@
 
-<td *ngFor="let col of columns">
+<td *ngFor="let col of columns" (click)="loadPresskit(launch['presskit'])">
     {{ launch[col] | ellipsis:90 }}
   </td>
