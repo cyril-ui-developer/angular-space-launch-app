@@ -14,11 +14,18 @@ export class LaunchComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    //console.log(this.launches)
+
   }
 
-  loadPresskit(event: Event, presskit: string) {
-  // this.router.navigateByUrl( 'presskit' );
-  console.log(presskit)
+  loadPresskit(event: Event, launch: ILaunch) {
+    if (this.launch.presskit === undefined || this.launch.presskit === null) {
+      console.log('Property presskit value is undefined or null!');
+      event.preventDefault();
+      return;
+    }
+    if (this.launch.presskit !== undefined || this.launch.presskit !== null) {
+      window.open(this.launch.presskit, '_blank');
+      return;
+    }
   }
 }

@@ -44,7 +44,7 @@ export class LaunchesComponent implements OnInit {
     this.loadLaunches(pagination.limit, pagination.offset, this.activeOrder);
   }
 
-  orderLaunches(order: string) {
+  orderLaunches( order: string) {
     this.activeOrder = order;
     this.currentPage = 1;
     // the default limit and offset are used for order action
