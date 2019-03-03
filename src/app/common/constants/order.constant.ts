@@ -1,3 +1,4 @@
 export const order = {
-  value: 'asc'
+  ascending: 'asc',
+  descending: 'desc'
 }

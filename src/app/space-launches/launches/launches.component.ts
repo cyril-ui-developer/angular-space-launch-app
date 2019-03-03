@@ -12,6 +12,7 @@ import { order } from 'src/app/common/constants/order.constant';
   styleUrls: ['./launches.component.scss']
 })
 export class LaunchesComponent implements OnInit {
+
   lunches: ILaunch[];
   columnTitles: string[] = ['Flight Number', 'Launch Year', 'Rocket Name', 'Details'];
   columns: string[] = ['flightNumber', 'launchYear', 'rocketName', 'details'];
@@ -23,33 +24,35 @@ export class LaunchesComponent implements OnInit {
   // ];
 
   currentPage: number = pagination.currentPage;
-  activeOrder: string = order.value;
+  activeOrder: string = order.ascending;
   maxSize = pagination.maxSize;
   pageSize = pagination.pageSize;
   rotate = pagination.rotate;
   boundaryLinks = pagination.boundaryLinks;
+  asc: string = order.ascending;
+  desc: string = order.descending;
 
   constructor(private lunchesService: LunchesService) { }
 
-  loadLaunches( limit: number, offset: number, order: string) {
+  loadLaunches(limit: number, offset: number, order: string) {
     this.lunchesService
       .getAllLunches(limit, offset, order)
       .subscribe(data => (this.lunches = data));
   }
 
   ngOnInit() {
-    this.loadLaunches( pagination.limit, pagination.offset, this.activeOrder);
+    this.loadLaunches(pagination.limit, pagination.offset, this.activeOrder);
   }
 
-  orderLaunches( order: string) {
+  orderLaunches(order: string) {
     this.activeOrder = order;
     this.currentPage = 1;
     // the default limit and offset are used for order action
-    this.loadLaunches( pagination.limit, pagination.offset, order );
+    this.loadLaunches(pagination.limit, pagination.offset, order);
   }
 
   pageChange() {
     // the default order is used for pagination action
-    this.loadLaunches( pagination.limit, ( this.currentPage - 1 ) * pagination.limit,  this.activeOrder);
+    this.loadLaunches(pagination.limit, (this.currentPage - 1) * pagination.limit, this.activeOrder);
   }
 }
