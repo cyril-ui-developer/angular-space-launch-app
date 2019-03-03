@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { SpaceLaunchesRoutingModule } from './space-lunches-routing.module';
 import { LaunchComponent } from './launch/launch.component';
@@ -18,7 +19,9 @@ import { EllipsisPipe } from '../common/pipes/ellipsis';
   imports: [
     CommonModule,
     HttpClientModule,
+    NgbPaginationModule,
     SpaceLaunchesRoutingModule
+
   ],
   providers: [ LunchesService ]
 })

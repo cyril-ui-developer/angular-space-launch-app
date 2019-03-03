@@ -16,4 +16,15 @@
       </tr>
     <tbody>
   </table>
+  <ngb-pagination class="d-flex justify-content-center"
+      [collectionSize]="91"
+      [(page)]="currentPage"
+      [maxSize]="maxSize"
+      [pageSize]="pageSize"
+      [rotate]="rotate"
+      [boundaryLinks]="boundaryLinks"
+      (pageChange)="pageChange()"
+      aria-label="Pagination"
+      >
+  </ngb-pagination>
 </div>
