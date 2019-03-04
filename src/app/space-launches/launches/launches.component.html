@@ -12,7 +12,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="" *ngFor="let launch of lunches" app-launch [columns]="columns" [launch]="launch">
+      <tr class="" *ngFor="let launch of lunches"
+      app-launch
+      [columns]="columns"
+      [launch]="launch"
+      (emitLaunch)="onLaunch($event)">
       </tr>
     <tbody>
   </table>

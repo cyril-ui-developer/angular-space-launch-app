@@ -4,6 +4,7 @@ import { LunchesService } from '../lunches.service';
 import { ILaunch } from '../launch';
 import { pagination } from 'src/app/common/constants/pagination.constant';
 import { order } from 'src/app/common/constants/order.constant';
+import { launchColumns } from 'src/app/common/constants/launch-columns.constant';
 
 
 @Component({
@@ -14,21 +15,14 @@ import { order } from 'src/app/common/constants/order.constant';
 export class LaunchesComponent implements OnInit {
 
   lunches: ILaunch[];
-  columnTitles: string[] = ['Flight Number', 'Launch Year', 'Rocket Name', 'Details'];
-  columns: string[] = ['flightNumber', 'launchYear', 'rocketName', 'details'];
-  // columns = [
-  //   { flightNumber: 'Flight Number' },
-  //   { launchYear: 'Launch Year'},
-  //   { rocketName: 'Rocket Name' },
-  //   { details: 'Details' }
-  // ];
-
+  columnTitles: string[] = launchColumns.columnTitles;
+  columns: string[] = launchColumns.columns;
   currentPage: number = pagination.currentPage;
   activeOrder: string = order.ascending;
-  maxSize = pagination.maxSize;
-  pageSize = pagination.pageSize;
-  rotate = pagination.rotate;
-  boundaryLinks = pagination.boundaryLinks;
+  maxSize: number = pagination.maxSize;
+  pageSize: number  = pagination.pageSize;
+  rotate: boolean = pagination.rotate;
+  boundaryLinks: boolean = pagination.boundaryLinks;
   asc: string = order.ascending;
   desc: string = order.descending;
 
@@ -44,7 +38,7 @@ export class LaunchesComponent implements OnInit {
     this.loadLaunches(pagination.limit, pagination.offset, this.activeOrder);
   }
 
-  orderLaunches( order: string) {
+  orderLaunches(order: string) {
     this.activeOrder = order;
     this.currentPage = 1;
     // the default limit and offset are used for order action
@@ -54,5 +48,17 @@ export class LaunchesComponent implements OnInit {
   pageChange() {
     // the default order is used for pagination action
     this.loadLaunches(pagination.limit, (this.currentPage - 1) * pagination.limit, this.activeOrder);
+  }
+
+  onLaunch(launch: ILaunch) {
+    if (launch.presskit === undefined || launch.presskit === null) {
+      console.log('Property presskit value is undefined or null!');
+      event.preventDefault();
+      return;
+    }
+    if (launch.presskit !== undefined || launch.presskit !== null) {
+      window.open(launch.presskit, '_blank');
+      return;
+    }
   }
 }

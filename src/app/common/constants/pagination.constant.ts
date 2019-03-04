@@ -4,6 +4,6 @@ export const pagination = {
   offset: 0,
   maxSize: 7,
   pageSize: 8,
-  rotate: "true",
-  boundaryLinks: "true"
+  rotate: true,
+  boundaryLinks: true
 }
