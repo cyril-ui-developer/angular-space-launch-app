@@ -1,0 +1,15 @@
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th *ngFor="let col of columnTitles">{{ col }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="" *ngFor="let rowData of tableData"
+      app-table-row
+      [columns]="columns"
+      [rowData]="rowData"
+      (emitRowData)="onEvent($event)">
+      </tr>
+    <tbody>
+  </table>

@@ -1,0 +1,5 @@
+
+<td *ngFor="let col of columns" (click)="onEvent( rowData )">
+    {{ rowData[col] | ellipsis:90 }}
+  </td>
+

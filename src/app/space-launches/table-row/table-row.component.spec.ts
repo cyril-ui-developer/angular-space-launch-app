@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LunchComponent } from './launch.component';
+import { TableRowComponent } from './table-row.component';
 
-describe('LunchComponent', () => {
-  let component: LunchComponent;
-  let fixture: ComponentFixture<LunchComponent>;
+describe('TableRowComponent', () => {
+  let component: TableRowComponent;
+  let fixture: ComponentFixture<TableRowComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LunchComponent ]
+      declarations: [ TableRowComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LunchComponent);
+    fixture = TestBed.createComponent(TableRowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
