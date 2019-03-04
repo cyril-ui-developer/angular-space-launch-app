@@ -6,23 +6,19 @@ import { SpaceLaunchesRoutingModule } from './space-lunches-routing.module';
 import { LaunchesComponent } from './launches/launches.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LunchesService } from './lunches.service';
-import { EllipsisPipe } from '../common/pipes/ellipsis';
-import { TableComponent } from './table/table.component';
-import { TableRowComponent } from './table-row/table-row.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   declarations: [
-    TableRowComponent,
     LaunchesComponent,
-    EllipsisPipe,
-    TableComponent
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     NgbPaginationModule,
-    SpaceLaunchesRoutingModule
+    SpaceLaunchesRoutingModule,
+    SharedModule
 
   ],
   providers: [ LunchesService ]

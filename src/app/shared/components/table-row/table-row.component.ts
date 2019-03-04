@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { ILaunch } from '../launch';
+//import { ILaunch } from '../launch';
 
 @Component({
   selector: '[app-table-row]',
@@ -9,13 +9,13 @@ import { ILaunch } from '../launch';
 export class TableRowComponent implements OnInit {
 
   @Input()
-  rowData: ILaunch;
+  rowData: any;
 
   @Input()
-  columns: string[];
+  columns: any[];
 
   @Output()
-  emitRowData: EventEmitter<ILaunch> = new EventEmitter<ILaunch>();
+  emitRowData: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }
 
@@ -23,7 +23,7 @@ export class TableRowComponent implements OnInit {
 
   }
 
-  onEvent(data: ILaunch) {
+  onEvent(data: any) {
     this.emitRowData.emit(data);
   }
 }

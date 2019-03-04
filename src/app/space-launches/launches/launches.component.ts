@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 import { LunchesService } from '../lunches.service';
 import { ILaunch } from '../launch';
-import { pagination } from 'src/app/common/constants/pagination.constant';
-import { order } from 'src/app/common/constants/order.constant';
-import { launchColumns } from 'src/app/common/constants/launch-columns.constant';
+import { launchColumns } from '../../constants/launch-columns.constant';
+import { pagination } from '../../constants/pagination.constant';
+import { order } from '../../constants/order.constant';
+
 
 
 @Component({
@@ -38,7 +39,7 @@ export class LaunchesComponent implements OnInit {
     this.loadLaunches(pagination.limit, pagination.offset, this.activeOrder);
   }
 
-  orderLaunches(order: string) {
+  orderLaunches( order: string ) {
     this.activeOrder = order;
     this.currentPage = 1;
     // the default limit and offset are used for order action
