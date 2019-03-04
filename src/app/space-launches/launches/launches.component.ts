@@ -53,7 +53,7 @@ export class LaunchesComponent implements OnInit {
 
   onLaunch(launch: ILaunch) {
     if (launch.presskit === undefined || launch.presskit === null) {
-      console.log('Property presskit value is undefined or null!');
+      alert('Property presskit value is null!');
       event.preventDefault();
       return;
     }

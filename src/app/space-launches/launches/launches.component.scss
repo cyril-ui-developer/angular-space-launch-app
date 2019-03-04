@@ -25,3 +25,18 @@ h2 {
   text-overflow: ellipsis;
   border: 1px solid #000000;
 }
+
+button {
+  margin: 2px;
+}
+
+// /deep/ .pagination .page-item .page-link {
+//   border-radius: 0 !important;
+// }
+
+// /deep/ .pagination .page-link {
+//   border-top-style: none !important;
+//   border-bottom-style: none !important;
+//   background-color: #f6f6f6 !important;
+//   color: black !important;
+// }

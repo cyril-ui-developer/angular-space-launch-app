@@ -1,8 +1,9 @@
 <div class="container">
-  <button (click)="orderLaunches( asc )">
+  <div>Sort Launch Order</div>
+  <button class="btn btn-secondary" (click)="orderLaunches( asc )">
     ASC
   </button>
-  <button (click)="orderLaunches( desc )">
+  <button class="btn btn-dark" (click)="orderLaunches( desc )">
     DESC
   </button>
 <app-table
