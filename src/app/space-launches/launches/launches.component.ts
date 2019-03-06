@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 import { LunchesService } from '../lunches.service';
 import { ILaunch } from '../launch';
-import { launchColumns } from '../../constants/launch-columns.constant';
+import { launchTableColumns } from '../../constants/launch-columns.constant';
 import { pagination } from '../../constants/pagination.constant';
 import { order } from '../../constants/order.constant';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -16,8 +17,8 @@ import { order } from '../../constants/order.constant';
 export class LaunchesComponent implements OnInit {
 
   lunches: ILaunch[];
-  columnTitles: string[] = launchColumns.columnTitles;
-  columns: string[] = launchColumns.columns;
+  columnTitles: string[] = Object.values(launchTableColumns);
+  columns: string[] = Object.keys(launchTableColumns);
   currentPage: number = pagination.currentPage;
   activeOrder: string = order.ascending;
   maxSize: number = pagination.maxSize;
@@ -27,12 +28,20 @@ export class LaunchesComponent implements OnInit {
   asc: string = order.ascending;
   desc: string = order.descending;
 
-  constructor(private lunchesService: LunchesService) { }
+  constructor(private lunchesService: LunchesService, private route: ActivatedRoute) { }
 
   loadLaunches(limit: number, offset: number, order: string) {
     this.lunchesService
       .getAllLunches(limit, offset, order)
       .subscribe(data => (this.lunches = data));
+
+      this.route.data
+      // .map((data) => data['todos'])
+       .subscribe(
+         (data) => {
+          this.lunches  = data.launches;
+         }
+       );
   }
 
   ngOnInit() {

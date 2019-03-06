@@ -1,5 +1,6 @@
-export const launchColumns = {
-  columnTitles: ['Flight Number', 'Launch Year', 'Rocket Name', 'Details'],
-  columns: ['flightNumber', 'launchYear', 'rocketName', 'details']
+export const launchTableColumns = {
+  flightNumber: 'Flight Number',
+  launchYear: 'Launch Year',
+  rocketName: 'Rocket Name',
+  details: 'Details'
 };
-
