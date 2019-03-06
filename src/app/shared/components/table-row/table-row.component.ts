@@ -1,29 +1,24 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-//import { ILaunch } from '../launch';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: '[app-table-row]',
   templateUrl: './table-row.component.html',
   styleUrls: ['./table-row.component.scss']
 })
-export class TableRowComponent implements OnInit {
+export class TableRowComponent<T> {
 
   @Input()
-  rowData: any;
+  rowData: T;
 
   @Input()
-  columns: any[];
+  columns: T[];
 
   @Output()
-  emitRowData: EventEmitter<any> = new EventEmitter<any>();
+  emitRowData: EventEmitter<T> = new EventEmitter<T>();
 
   constructor() { }
 
-  ngOnInit() {
-
-  }
-
-  onEvent(data: any) {
+  onEvent(data: T) {
     this.emitRowData.emit(data);
   }
 }

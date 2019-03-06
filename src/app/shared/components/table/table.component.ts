@@ -1,31 +1,28 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-//import { ILaunch } from '../launch';
+import { Component,Input, EventEmitter, Output } from '@angular/core';
+
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements OnInit {
+export class TableComponent<T> {
 
   @Input()
-  columnTitles: any[];
+  columnTitles: T[];
 
   @Input()
-  columns: any[];
+  columns: T[];
 
   @Input()
-  tableData: any[];
+  tableData: T[];
 
   @Output()
-  emitData: EventEmitter<any> = new EventEmitter<any>();
+  emitData: EventEmitter<T> = new EventEmitter<T>();
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
-  onEvent(data: any){
+  onEvent(data: T) {
     this.emitData.emit(data);
   }
 }
