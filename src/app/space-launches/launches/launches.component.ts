@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { LunchesService } from '../lunches.service';
 import { ILaunch } from '../launch';
@@ -14,7 +14,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './launches.component.html',
   styleUrls: ['./launches.component.scss']
 })
-export class LaunchesComponent implements OnInit {
+export class LaunchesComponent implements OnInit, OnDestroy {
 
   lunches: ILaunch[];
   columnTitles: string[] = Object.values(launchTableColumns);
@@ -27,21 +27,22 @@ export class LaunchesComponent implements OnInit {
   boundaryLinks: boolean = pagination.boundaryLinks;
   asc: string = order.ascending;
   desc: string = order.descending;
+  subscription;
 
   constructor(private lunchesService: LunchesService, private route: ActivatedRoute) { }
 
   loadLaunches(limit: number, offset: number, order: string) {
-    this.lunchesService
+    this.subscription = this.lunchesService
       .getAllLunches(limit, offset, order)
       .subscribe(data => (this.lunches = data));
 
-      this.route.data
-      // .map((data) => data['todos'])
-       .subscribe(
-         (data) => {
-          this.lunches  = data.launches;
-         }
-       );
+      // this.route.data
+      // // .map((data) => data['todos'])
+      //  .subscribe(
+      //    (data) => {
+      //     this.lunches  = data.launches;
+      //    }
+      //  );
   }
 
   ngOnInit() {
@@ -70,5 +71,9 @@ export class LaunchesComponent implements OnInit {
       window.open(launch.presskit, '_blank');
       return;
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
